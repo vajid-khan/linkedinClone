@@ -1,12 +1,15 @@
 import React from 'react';
-import Avatar from '../components/avatar';
+import {ScrollView} from 'react-native';
 import {Box, Text} from '../theme';
+import Avatar from '../components/avatar';
+import FIcon from 'react-native-vector-icons/Feather';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 interface Props {}
 
 const LeftDrawer: React.FC<Props> = () => {
   return (
-    <>
+    <ScrollView showsVerticalScrollIndicator={false}>
       <Box
         paddingVertical={'l'}
         paddingHorizontal={'s'}
@@ -17,48 +20,71 @@ const LeftDrawer: React.FC<Props> = () => {
             alignItems={'center'}
             justifyContent={'space-around'}>
             <Avatar />
-            <Box alignItems={'center'} justifyContent={'space-between'}>
+            <Box alignItems={'center'}>
               <Text
                 variant={'boldTitle'}
                 fontWeight={'bold'}
-                paddingVertical={'s'}>
+                paddingVertical={'s'}
+                numberOfLines={1}>
                 Vajidali Khan
               </Text>
-              <Box flexDirection={'row'}>
-                <Text color={'primary'}>View Profile</Text>
-                <Text>{' . '}</Text>
-                <Text color={'primary'}>Settings</Text>
+              <Box flexDirection={'row'} alignItems={'center'}>
+                <Text color={'primary'} paddingRight={'s'}>
+                  View Profile
+                </Text>
+                <Icon name={'checkbox-blank-circle'} size={5} />
+                <Text color={'primary'} paddingLeft={'s'}>
+                  Settings
+                </Text>
               </Box>
             </Box>
-            <Text>X</Text>
+            <Icon name={'close'} size={30} />
           </Box>
         </Box>
       </Box>
 
-      <Box paddingHorizontal={'s'} paddingTop={'m'}>
-        <Text variant={'secondary'}>Recent</Text>
-        <Link title={'React Native'} />
-        <Link title={'React Native Jobs'} />
-        <Link title={'UAE Jobs & Careers | React Native'} />
-        <Link title={'PHP'} />
-      </Box>
+      <Box marginRight={'s'} paddingHorizontal={'m'}>
+        <Box paddingTop={'m'}>
+          <Text variant={'secondary'}>Recent</Text>
+          <Link icon={'users'} title={'React Native'} />
+          <Link icon={'users'} title={'React Native Jobs'} />
+          <Link icon={'users'} title={'UAE Jobs & Careers | React Native'} />
+          <Link icon={'users'} title={'PHP'} />
+        </Box>
 
-      <Box paddingHorizontal={'s'} paddingTop={'m'}>
-        <Text variant={'secondary'}>Groups</Text>
-        <Link title={'React Native'} />
-        <Link title={'PHP'} />
+        <Box paddingTop={'m'}>
+          <Text variant={'secondary'}>Groups</Text>
+          <Link icon={'users'} title={'React Native'} />
+          <Link icon={'users'} title={'PHP Laravel'} />
+          <Link title={'Show More'} />
+        </Box>
+
+        <Box paddingTop={'m'}>
+          <Text variant={'secondary'}>Events</Text>
+          <Link icon={'plus'} title={'Create Event'} />
+        </Box>
+
+        <Box paddingTop={'m'}>
+          <Text variant={'secondary'}>Followed Hashtags</Text>
+          <Link icon={'hash'} title={'javascript'} />
+          <Link icon={'hash'} title={'reactjs'} />
+          <Link icon={'hash'} title={'laravel'} />
+          <Link icon={'hash'} title={'laracon'} />
+        </Box>
       </Box>
-    </>
+    </ScrollView>
   );
 };
 
 interface ILink {
   title: string;
+  icon?: 'hash' | 'users' | 'plus';
 }
 
-const Link = ({title}: ILink) => (
-  <Box paddingHorizontal={'s'} paddingVertical={'m'}>
-    <Text fontSize={18} fontWeight={'700'} numberOfLines={1}>
+const Link = ({title, icon}: ILink) => (
+  <Box paddingVertical={'m'} flexDirection={'row'} alignItems={'center'}>
+    {icon && <FIcon name={icon} size={20} />}
+    <Text fontSize={16} fontWeight={'700'} numberOfLines={1} paddingLeft={'s'}>
       {title}
     </Text>
   </Box>
