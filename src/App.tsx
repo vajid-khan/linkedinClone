@@ -10,14 +10,14 @@ import {
   PostStack,
   LeftDrawer,
   NotificationStack,
-} from './src/routes';
-import theme from './src/theme';
+} from './routes';
+import theme from './theme';
 import Icon from 'react-native-vector-icons/Feather';
 
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 
-const AppNavigation = () => {
+const TabNavigation = () => {
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
@@ -46,20 +46,16 @@ const AppNavigation = () => {
   );
 };
 
-const App = () => (
-  <NavigationContainer>
-    <Drawer.Navigator
-      initialRouteName="App"
-      drawerContent={() => <LeftDrawer />}>
-      <Drawer.Screen name="Home" component={AppNavigation} />
-    </Drawer.Navigator>
-  </NavigationContainer>
-);
-
 export default () => {
   return (
     <ThemeProvider theme={theme}>
-      <App />
+      <NavigationContainer>
+        <Drawer.Navigator
+          initialRouteName="App"
+          drawerContent={() => <LeftDrawer />}>
+          <Drawer.Screen name="Home" component={TabNavigation} />
+        </Drawer.Navigator>
+      </NavigationContainer>
     </ThemeProvider>
   );
 };
