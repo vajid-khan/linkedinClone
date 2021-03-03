@@ -18,7 +18,7 @@ const Header: React.FC<Props> = () => {
         backgroundColor={'background'}>
         <Box flexDirection="row" flex={1}>
           <Icon name={'magnify'} size={25} />
-          <Text variant={'boldTitle'} fontSize={18}>
+          <Text variant={'bold'} fontSize={18}>
             Search
           </Text>
         </Box>

@@ -11,7 +11,9 @@ const PostCard: React.FC<Props> = () => {
       <Box paddingHorizontal={'s'} flexDirection={'row'}>
         <Avatar />
         <Box flex={1} marginLeft={'s'}>
-          <Text fontSize={22}>Title</Text>
+          <Text variant={'bold'} fontSize={22}>
+            Title
+          </Text>
           <Text>1.2m followers</Text>
           <Text>1h</Text>
         </Box>

@@ -21,7 +21,7 @@ const LeftDrawer: React.FC<DrawerContentComponentProps> = ({navigation}) => {
             <Avatar />
             <Box alignItems={'center'}>
               <Text
-                variant={'boldTitle'}
+                variant={'bold'}
                 fontWeight={'bold'}
                 paddingVertical={'s'}
                 numberOfLines={1}>

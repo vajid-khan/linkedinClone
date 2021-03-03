@@ -28,9 +28,8 @@ const theme = createTheme({
     xl: 40,
   },
   textVariants: {
-    boldTitle: {
+    bold: {
       fontWeight: 'bold',
-      fontSize: 26,
     },
     title: {
       fontSize: 26,

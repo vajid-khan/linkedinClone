@@ -1,5 +1,5 @@
 import React from 'react';
-import {Dimensions, StyleSheet} from 'react-native';
+import {Dimensions} from 'react-native';
 import Avatar from '../../components/avatar';
 import {Box, Text} from '../../theme';
 import Icon from 'react-native-vector-icons/Feather';
