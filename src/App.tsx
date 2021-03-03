@@ -52,7 +52,7 @@ export default () => {
       <NavigationContainer>
         <Drawer.Navigator
           initialRouteName="App"
-          drawerContent={() => <LeftDrawer />}>
+          drawerContent={(props) => <LeftDrawer {...props} />}>
           <Drawer.Screen name="Home" component={TabNavigation} />
         </Drawer.Navigator>
       </NavigationContainer>

@@ -3,13 +3,12 @@ import {ScrollView} from 'react-native';
 import {Box, Text} from '../../theme';
 import Avatar from '../../components/avatar';
 import FIcon from 'react-native-vector-icons/Feather';
+import {DrawerContentComponentProps} from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-interface Props {}
-
-const LeftDrawer: React.FC<Props> = () => {
+const LeftDrawer: React.FC<DrawerContentComponentProps> = ({navigation}) => {
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
+    <>
       <Box
         paddingVertical={'l'}
         paddingHorizontal={'s'}
@@ -38,41 +37,47 @@ const LeftDrawer: React.FC<Props> = () => {
                 </Text>
               </Box>
             </Box>
-            <Icon name={'close'} size={30} />
+            <Icon name={'close'} size={30} onPress={navigation.closeDrawer} />
           </Box>
         </Box>
       </Box>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <Box marginRight={'s'} paddingHorizontal={'m'}>
+          <Box paddingTop={'m'}>
+            <Text variant={'secondary'}>Recent</Text>
+            <Link icon={'users'} title={'React Native'} />
+            <Link icon={'users'} title={'React Native Jobs'} />
+            <Link icon={'users'} title={'UAE Jobs & Careers | React Native'} />
+            <Link icon={'users'} title={'PHP'} />
+          </Box>
 
-      <Box marginRight={'s'} paddingHorizontal={'m'}>
-        <Box paddingTop={'m'}>
-          <Text variant={'secondary'}>Recent</Text>
-          <Link icon={'users'} title={'React Native'} />
-          <Link icon={'users'} title={'React Native Jobs'} />
-          <Link icon={'users'} title={'UAE Jobs & Careers | React Native'} />
-          <Link icon={'users'} title={'PHP'} />
-        </Box>
+          <Box paddingTop={'m'}>
+            <Text color={'primary'}>Groups</Text>
+            <Link icon={'users'} title={'React Native'} />
+            <Link icon={'users'} title={'PHP Laravel'} />
+            <Link title={'Show More'} />
+          </Box>
 
-        <Box paddingTop={'m'}>
-          <Text variant={'secondary'}>Groups</Text>
-          <Link icon={'users'} title={'React Native'} />
-          <Link icon={'users'} title={'PHP Laravel'} />
-          <Link title={'Show More'} />
-        </Box>
+          <Box paddingTop={'m'}>
+            <Text color={'primary'}>Events</Text>
+            <Link icon={'plus'} title={'Create Event'} />
+          </Box>
 
-        <Box paddingTop={'m'}>
-          <Text variant={'secondary'}>Events</Text>
-          <Link icon={'plus'} title={'Create Event'} />
-        </Box>
+          <Box paddingTop={'m'}>
+            <Text color={'primary'}>Followed Hashtags</Text>
+            <Link icon={'hash'} title={'javascript'} />
+            <Link icon={'hash'} title={'reactjs'} />
+            <Link icon={'hash'} title={'laravel'} />
+            <Link icon={'hash'} title={'laracon'} />
+            <Link title={'Show More'} />
+          </Box>
 
-        <Box paddingTop={'m'}>
-          <Text variant={'secondary'}>Followed Hashtags</Text>
-          <Link icon={'hash'} title={'javascript'} />
-          <Link icon={'hash'} title={'reactjs'} />
-          <Link icon={'hash'} title={'laravel'} />
-          <Link icon={'hash'} title={'laracon'} />
+          <Box paddingTop={'m'} marginBottom={'l'}>
+            <Text color={'primary'}>Discover More</Text>
+          </Box>
         </Box>
-      </Box>
-    </ScrollView>
+      </ScrollView>
+    </>
   );
 };
 
@@ -82,7 +87,7 @@ interface ILink {
 }
 
 const Link = ({title, icon}: ILink) => (
-  <Box paddingVertical={'m'} flexDirection={'row'} alignItems={'center'}>
+  <Box paddingVertical={'sm'} flexDirection={'row'} alignItems={'center'}>
     {icon && <FIcon name={icon} size={20} />}
     <Text fontSize={16} fontWeight={'700'} numberOfLines={1} paddingLeft={'s'}>
       {title}
