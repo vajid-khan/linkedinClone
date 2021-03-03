@@ -7,7 +7,7 @@ interface Props {}
 
 const PostCard: React.FC<Props> = () => {
   return (
-    <Box paddingVertical={'m'} backgroundColor={'light'} marginBottom={'s'}>
+    <Box paddingTop={'m'} backgroundColor={'light'} marginBottom={'s'}>
       <Box paddingHorizontal={'s'} flexDirection={'row'}>
         <Avatar />
         <Box flex={1} marginLeft={'s'}>
@@ -49,7 +49,11 @@ const PostCard: React.FC<Props> = () => {
           <Text>Share</Text>
         </Box>
         <Box flex={1} justifyContent={'center'} alignItems={'center'}>
-          <Icon name={'md-send'} size={20} />
+          <Icon
+            name={'md-send'}
+            size={20}
+            style={{transform: [{rotate: '-45deg'}]}}
+          />
           <Text>Send</Text>
         </Box>
       </Box>

@@ -54,7 +54,7 @@ const Networks: React.FC<Props> = () => {
           Software Engineer you may know
         </Text>
         <Box flexWrap={'wrap'} flexDirection={'row'}>
-          {new Array(9).fill(0).map((_, index) => (
+          {new Array(8).fill(0).map((_, index) => (
             <User key={index} />
           ))}
         </Box>

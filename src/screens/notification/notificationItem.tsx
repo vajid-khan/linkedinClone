@@ -24,7 +24,7 @@ const NotificationItem: React.FC<Props> = ({notification}) => {
       borderBottomColor={'background'}
       borderBottomWidth={1}>
       <Avatar size={50} />
-      <Box flex={1} marginHorizontal={'s'}>
+      <Box flex={1} marginHorizontal={'s'} justifyContent={'center'}>
         {notification.title && (
           <Text numberOfLines={1}>{notification.title.toUpperCase()}</Text>
         )}
