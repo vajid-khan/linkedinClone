@@ -51,19 +51,28 @@ const LeftDrawer: React.FC<DrawerContentComponentProps> = ({navigation}) => {
             <Link icon={'users'} title={'PHP'} />
           </Box>
 
-          <Box paddingTop={'m'}>
+          <Box
+            paddingTop={'m'}
+            borderTopColor={'background'}
+            borderTopWidth={1}>
             <Text color={'primary'}>Groups</Text>
             <Link icon={'users'} title={'React Native'} />
             <Link icon={'users'} title={'PHP Laravel'} />
             <Link title={'Show More'} />
           </Box>
 
-          <Box paddingTop={'m'}>
+          <Box
+            paddingTop={'m'}
+            borderTopColor={'background'}
+            borderTopWidth={1}>
             <Text color={'primary'}>Events</Text>
             <Link icon={'plus'} title={'Create Event'} />
           </Box>
 
-          <Box paddingTop={'m'}>
+          <Box
+            paddingTop={'m'}
+            borderTopColor={'background'}
+            borderTopWidth={1}>
             <Text color={'primary'}>Followed Hashtags</Text>
             <Link icon={'hash'} title={'javascript'} />
             <Link icon={'hash'} title={'reactjs'} />
@@ -72,7 +81,11 @@ const LeftDrawer: React.FC<DrawerContentComponentProps> = ({navigation}) => {
             <Link title={'Show More'} />
           </Box>
 
-          <Box paddingTop={'m'} marginBottom={'l'}>
+          <Box
+            paddingTop={'m'}
+            marginBottom={'l'}
+            borderTopColor={'background'}
+            borderTopWidth={1}>
             <Text color={'primary'}>Discover More</Text>
           </Box>
         </Box>
