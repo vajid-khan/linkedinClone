@@ -1,7 +1,7 @@
 import React from 'react';
 import {ScrollView} from 'react-native';
-import {Box, Text} from '../theme';
-import Avatar from '../components/avatar';
+import {Box, Text} from '../../theme';
+import Avatar from '../../components/avatar';
 import FIcon from 'react-native-vector-icons/Feather';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 

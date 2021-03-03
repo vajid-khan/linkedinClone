@@ -1,14 +1,18 @@
 import React from 'react';
 import {Box} from '../theme';
 
-interface Props {}
+interface Props {
+  size?: number;
+}
 
-const Avatar: React.FC<Props> = () => {
+const Avatar: React.FC<Props> = ({size}) => {
+  size = size ? size : 60;
+
   return (
     <Box
-      height={60}
-      width={60}
-      borderRadius={30}
+      height={size}
+      width={size}
+      borderRadius={size / 2}
       backgroundColor={'secondary'}
     />
   );
