@@ -6,7 +6,7 @@ import {stackConfig} from './config';
 const PostStack = createStackNavigator();
 
 export default () => (
-  <PostStack.Navigator screenOptions={stackConfig}>
+  <PostStack.Navigator screenOptions={{...stackConfig, headerShown: false}}>
     <PostStack.Screen name={'Post'} component={PostScreen} />
   </PostStack.Navigator>
 );

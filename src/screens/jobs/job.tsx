@@ -16,7 +16,7 @@ const Job: React.FC<Props> = () => {
       contentContainerStyle={{
         backgroundColor: theme.colors.background,
       }}>
-      <Box paddingHorizontal={'s'}>
+      <Box padding={'s'}>
         <Text variant={'bold'} fontSize={26}>
           Highlights
         </Text>
