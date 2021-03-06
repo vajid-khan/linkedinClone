@@ -1,8 +1,9 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
 import {stackConfig} from './config';
-import {NotificationScreen} from '../screens/notification';
 import {ChatScreen} from '../screens/chat';
+import ChatHeader from './headers/chatHeader';
+import {NotificationScreen} from '../screens/notification';
+import {createStackNavigator} from '@react-navigation/stack';
 
 const NotificationStack = createStackNavigator();
 
@@ -12,6 +13,12 @@ export default () => (
       name={'Notification'}
       component={NotificationScreen}
     />
-    <NotificationStack.Screen name={'Chat'} component={ChatScreen} />
+    <NotificationStack.Screen
+      name={'Chat'}
+      options={{
+        header: (props) => <ChatHeader {...props} />,
+      }}
+      component={ChatScreen}
+    />
   </NotificationStack.Navigator>
 );
