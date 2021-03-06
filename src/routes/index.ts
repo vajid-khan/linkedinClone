@@ -1,6 +1,6 @@
-export {default as HomeStack} from './home';
-export {default as NetworkStack} from './network';
-export {default as PostStack} from './post';
-export {default as NotificationStack} from './notification';
-export {default as JobsStack} from './job';
 export {default as LeftDrawer} from './component/leftDrawer';
+export {default as DefaultHeader} from './headers/index';
+export {default as ChatHeader} from './headers/chatHeader';
+export {default as BottomTabBar} from './tabs/bottomtabs';
+export {default as TabNavigation} from './tabNavigation';
+export {default as AppStackNavigation} from './homeNavigation';
