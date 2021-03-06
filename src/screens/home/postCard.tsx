@@ -7,7 +7,7 @@ interface Props {}
 
 const PostCard: React.FC<Props> = () => {
   return (
-    <Box paddingTop={'m'} backgroundColor={'light'} marginBottom={'s'}>
+    <Box paddingTop={'m'} backgroundColor={'light'} marginTop={'s'}>
       <Box paddingHorizontal={'s'} flexDirection={'row'}>
         <Avatar />
         <Box flex={1} marginLeft={'s'}>

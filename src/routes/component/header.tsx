@@ -1,10 +1,12 @@
 import React from 'react';
 import {Box, Text} from '../../theme';
 import Avatar from '../../components/avatar';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {DrawerActions} from '@react-navigation/native';
 import {StackHeaderProps} from '@react-navigation/stack';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const Header: React.FC<StackHeaderProps> = ({navigation}) => {
+const Header: React.FC<StackHeaderProps> = ({navigation, scene}) => {
   return (
     <Box backgroundColor={'light'}>
       <Box
@@ -12,7 +14,10 @@ const Header: React.FC<StackHeaderProps> = ({navigation}) => {
         flexDirection={'row'}
         marginHorizontal={'m'}
         marginBottom={'s'}>
-        <Avatar size={45} />
+        <TouchableOpacity
+          onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
+          <Avatar size={35} />
+        </TouchableOpacity>
         <Box
           flex={1}
           padding={'s'}
@@ -21,18 +26,23 @@ const Header: React.FC<StackHeaderProps> = ({navigation}) => {
           borderRadius={5}
           backgroundColor={'background'}>
           <Box flexDirection="row" flex={1}>
-            <Icon name={'magnify'} size={25} />
-            <Text variant={'bold'} fontSize={18}>
-              Search
+            <Icon name={'magnify'} size={20} />
+            <Text variant={'bold'} fontSize={16}>
+              Search {scene.route.name === 'Jobs' ? 'jobs' : ''}
             </Text>
           </Box>
           <Box>
-            <Icon name={'barcode-scan'} size={25} />
+            <Icon name={'barcode-scan'} size={20} />
           </Box>
         </Box>
+        {scene.route.name === 'Jobs' && (
+          <Box marginHorizontal={'s'}>
+            <Icon name={'dots-vertical'} size={20} />
+          </Box>
+        )}
 
         <Icon
-          size={25}
+          size={20}
           name={'message-processing'}
           onPress={() => navigation.push('Chat')}
         />

@@ -33,7 +33,7 @@ const RecentSearch: React.FC<Props> = () => {
           </Box>
         ))}
       <Box
-        paddingVertical={'s'}
+        paddingVertical={'sm'}
         paddingHorizontal={'l'}
         borderColor={'background'}
         borderWidth={1}

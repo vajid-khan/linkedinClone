@@ -24,6 +24,7 @@ const LeftDrawer: React.FC<DrawerContentComponentProps> = ({navigation}) => {
                 variant={'bold'}
                 fontWeight={'bold'}
                 paddingVertical={'s'}
+                fontSize={20}
                 numberOfLines={1}>
                 Vajidali Khan
               </Text>
