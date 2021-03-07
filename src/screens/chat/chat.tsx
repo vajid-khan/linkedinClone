@@ -20,20 +20,22 @@ const Chat: React.FC<Props> = () => {
           flexDirection={'row'}
           alignItems={'center'}
           paddingVertical={'s'}
-          justifyContent={'space-between'}
           borderBottomColor={'background'}
           borderBottomWidth={1}>
           <Box flexDirection={'row'} alignItems={'center'}>
             <Icon name={'magnify'} size={30} />
-            <TextInput
-              placeholder={'Seach messages'}
-              style={{
-                fontSize: 20,
-                backgroundColor: theme.colors.light,
-              }}
-            />
+            <Box flex={1}>
+              <TextInput
+                numberOfLines={1}
+                placeholder={'Seach messages'}
+                style={{
+                  fontSize: 20,
+                  backgroundColor: theme.colors.light,
+                }}
+              />
+            </Box>
+            <Icon name={'filter-variant'} size={30} />
           </Box>
-          <Icon name={'filter-variant'} size={30} />
         </Box>
       )}
       data={new Array(20).fill(0).map((_, i) => i)}

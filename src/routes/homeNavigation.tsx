@@ -19,7 +19,7 @@ export default () => {
         },
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       }}>
-      <HomeStack.Screen name={'App'} component={TabNavigation} />
+      <HomeStack.Screen name={'HomeStack'} component={TabNavigation} />
       <HomeStack.Screen
         name={'Chat'}
         options={{

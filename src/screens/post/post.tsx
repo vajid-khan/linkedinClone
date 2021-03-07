@@ -1,17 +1,20 @@
-import React from 'react';
+import React, {useLayoutEffect} from 'react';
 import {Box, Text} from '../../theme';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {JobStackParamList} from '../../routes/post';
+import {BottomTabNavigationProp} from '@react-navigation/bottom-tabs';
 import Avatar from '../../components/avatar';
 import {TextInput} from 'react-native-gesture-handler';
-type JobScreenNavigationProp = StackNavigationProp<JobStackParamList, 'Post'>;
+import {BottomTabList} from '../../routes/tabNavigation';
+type PostScreenNavigationProp = BottomTabNavigationProp<BottomTabList>;
 
 type Props = {
-  navigation: JobScreenNavigationProp;
+  navigation: PostScreenNavigationProp;
 };
 
 const Post: React.FC<Props> = ({navigation}) => {
+  useLayoutEffect(() => {
+    navigation.setOptions({tabBarVisible: false});
+  }, [navigation]);
   return (
     <Box flex={1} backgroundColor={'light'}>
       <Box
@@ -24,7 +27,7 @@ const Post: React.FC<Props> = ({navigation}) => {
         borderBottomColor={'background'}
         paddingBottom={'m'}>
         <Box flexDirection={'row'} alignItems={'center'}>
-          <Icon name={'close'} size={30} onPress={() => navigation.pop()} />
+          <Icon name={'close'} size={30} />
           <Text variant={'bold'} fontSize={20} marginLeft={'sm'}>
             Share Post
           </Text>
@@ -53,6 +56,7 @@ const Post: React.FC<Props> = ({navigation}) => {
 
         <TextInput
           placeholder={'What do you want to talk about?'}
+          multiline
           style={{
             flex: 1,
             fontSize: 20,

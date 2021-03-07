@@ -7,7 +7,15 @@ import {NotificationScreen} from '../screens/notification';
 import {PostScreen} from '../screens/post';
 import {BottomTabBar} from '.';
 
-const Tab = createBottomTabNavigator();
+export type BottomTabList = {
+  Home: undefined;
+  'My Networks': undefined;
+  Post: undefined;
+  Notification: undefined;
+  Jobs: undefined;
+};
+
+const Tab = createBottomTabNavigator<BottomTabList>();
 
 export default () => {
   return (
