@@ -5,10 +5,12 @@ import {
 } from '@react-navigation/stack';
 import {TabNavigation} from '.';
 import {ChatScreen} from '../screens/chat';
+import {SearchScreen} from '../screens/search';
 
 export type StackList = {
   Home: undefined;
   Chat: undefined;
+  Search: undefined;
 };
 const HomeStack = createStackNavigator<StackList>();
 
@@ -17,21 +19,11 @@ export default () => {
     <HomeStack.Navigator
       screenOptions={{
         headerShown: false,
-        // header: (props) => <DefaultHeader {...props} />,
-        headerStyle: {
-          elevation: 0,
-          backgroundColor: 'transparent',
-        },
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       }}>
       <HomeStack.Screen name={'Home'} component={TabNavigation} />
-      <HomeStack.Screen
-        name={'Chat'}
-        // options={{
-        //   header: (props) => <ChatHeader {...props} />,
-        // }}
-        component={ChatScreen}
-      />
+      <HomeStack.Screen name={'Chat'} component={ChatScreen} />
+      <HomeStack.Screen name={'Search'} component={SearchScreen} />
     </HomeStack.Navigator>
   );
 };

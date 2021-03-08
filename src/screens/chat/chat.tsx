@@ -1,6 +1,6 @@
 import React from 'react';
+import Header from './header';
 import ChatItem from './chatItem';
-import {ChatHeader} from '../../routes';
 import {Box, Theme} from '../../theme';
 import {useTheme} from '@shopify/restyle';
 import {FlatList, TextInput} from 'react-native';
@@ -12,7 +12,7 @@ const Chat: React.FC<Props> = () => {
   const theme = useTheme<Theme>();
   return (
     <>
-      <ChatHeader />
+      <Header />
       <FlatList
         contentContainerStyle={{
           backgroundColor: theme.colors.light,

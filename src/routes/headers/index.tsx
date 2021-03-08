@@ -1,7 +1,7 @@
 import React, {ReactNode} from 'react';
 import {Box, Text} from '../../theme';
 import Avatar from '../../components/avatar';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import {TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {DrawerActions, useNavigation} from '@react-navigation/native';
 
@@ -32,9 +32,11 @@ const Header: React.FC<Props> = ({rightActions}) => {
           backgroundColor={'background'}>
           <Box flexDirection="row" flex={1}>
             <Icon name={'magnify'} size={20} />
-            <Text variant={'bold'} fontSize={16}>
-              Search
-            </Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Search')}>
+              <Text variant={'bold'} fontSize={16}>
+                Search
+              </Text>
+            </TouchableOpacity>
           </Box>
           <Box>
             <Icon name={'barcode-scan'} size={20} />
