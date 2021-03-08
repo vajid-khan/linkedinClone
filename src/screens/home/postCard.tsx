@@ -33,6 +33,16 @@ const PostCard: React.FC<Props> = () => {
         <Text fontWeight={'bold'}>Lorem ipsum dolor sit amet consectetur</Text>
         <Text>Lorem ipsum dolor sit amet consectetur</Text>
       </Box>
+      <Box margin={'sm'} flexDirection={'row'}>
+        <Box
+          backgroundColor={'primary'}
+          borderRadius={100}
+          marginRight={'s'}
+          style={{padding: 3}}>
+          <Icon name={'thumbs-up-outline'} size={15} color={'#fff'} />
+        </Box>
+        <Text>3</Text>
+      </Box>
       <Box
         borderTopColor={'background'}
         borderTopWidth={1}

@@ -32,7 +32,9 @@ const Header: React.FC<Props> = ({rightActions}) => {
           backgroundColor={'background'}>
           <Box flexDirection="row" flex={1}>
             <Icon name={'magnify'} size={20} />
-            <TouchableOpacity onPress={() => navigation.navigate('Search')}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Search')}
+              style={{flex: 1}}>
               <Text variant={'bold'} fontSize={16}>
                 Search
               </Text>

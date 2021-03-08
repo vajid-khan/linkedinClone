@@ -20,13 +20,12 @@ const Chat: React.FC<Props> = () => {
         ListHeaderComponent={() => (
           <Box
             borderTopWidth={1}
-            borderTopColor={'background'}
-            paddingHorizontal={'sm'}
             flexDirection={'row'}
             alignItems={'center'}
-            paddingVertical={'s'}
-            borderBottomColor={'background'}
-            borderBottomWidth={1}>
+            borderBottomWidth={1}
+            paddingHorizontal={'sm'}
+            borderTopColor={'background'}
+            borderBottomColor={'background'}>
             <Box flexDirection={'row'} alignItems={'center'}>
               <Icon name={'magnify'} size={30} />
               <Box flex={1}>

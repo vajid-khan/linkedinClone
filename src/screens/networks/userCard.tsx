@@ -27,7 +27,7 @@ const User: React.FC<Props> = () => {
           top: -50,
         }}>
         <Avatar size={100} />
-        <Text>Jhon Doe</Text>
+        <Text variant={'bold'}>Jhon Doe</Text>
         <Text>Full Stack Developer</Text>
         <Box marginVertical={'s'} flexDirection={'row'} alignItems={'center'}>
           <Icon name={'user-plus'} size={20} />

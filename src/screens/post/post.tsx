@@ -1,10 +1,10 @@
 import React from 'react';
 import {Box, Text} from '../../theme';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {BottomTabNavigationProp} from '@react-navigation/bottom-tabs';
 import Avatar from '../../components/avatar';
 import {TextInput} from 'react-native-gesture-handler';
 import {BottomTabList} from '../../routes/tabNavigation';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {BottomTabNavigationProp} from '@react-navigation/bottom-tabs';
 type PostScreenNavigationProp = BottomTabNavigationProp<BottomTabList>;
 
 type Props = {
@@ -41,6 +41,7 @@ const Post: React.FC<Props> = ({navigation}) => {
           <Box marginLeft={'m'}>
             <Text variant={'bold'}>Vajid Khan</Text>
             <Box
+              marginTop={'s'}
               flexDirection={'row'}
               alignItems={'center'}
               borderWidth={1}
@@ -49,7 +50,9 @@ const Post: React.FC<Props> = ({navigation}) => {
               paddingHorizontal={'m'}
               borderRadius={100}>
               <Icon name={'earth'} size={20} />
-              <Text>Anyone</Text>
+              <Box paddingHorizontal={'s'}>
+                <Text>Anyone</Text>
+              </Box>
               <Icon name={'arrow-down-drop-circle'} size={20} />
             </Box>
           </Box>
