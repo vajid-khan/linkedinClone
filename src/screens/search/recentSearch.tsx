@@ -30,7 +30,7 @@ const RecentSearch: React.FC<Props> = () => {
           <Box key={index} paddingVertical={'m'} flexDirection={'row'}>
             <Icon name={'clock-outline'} size={25} />
             <Box flex={1} paddingLeft={'s'}>
-              <Text variant={'bold'} fontSize={18}>
+              <Text variant={'bold'} fontSize={16}>
                 application developer
               </Text>
             </Box>

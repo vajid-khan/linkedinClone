@@ -1,5 +1,7 @@
 import React from 'react';
+import {Theme} from '../../theme';
 import {FlatList} from 'react-native';
+import {useTheme} from '@shopify/restyle';
 import withHeader from '../../hoc/withHeader';
 import NotificationItem, {INotification} from './notificationItem';
 
@@ -85,8 +87,13 @@ const notifications: INotification[] = [
 ];
 
 const Notification: React.FC<Props> = () => {
+  const theme = useTheme<Theme>();
+
   return (
     <FlatList
+      contentContainerStyle={{
+        backgroundColor: theme.colors.light,
+      }}
       data={notifications}
       keyExtractor={(item) => item.id.toString()}
       renderItem={({item}) => <NotificationItem notification={item} />}
