@@ -1,4 +1,4 @@
-import React, {useLayoutEffect} from 'react';
+import React from 'react';
 import {Box, Text} from '../../theme';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {BottomTabNavigationProp} from '@react-navigation/bottom-tabs';
@@ -12,9 +12,6 @@ type Props = {
 };
 
 const Post: React.FC<Props> = ({navigation}) => {
-  useLayoutEffect(() => {
-    navigation.setOptions({tabBarVisible: false});
-  }, [navigation]);
   return (
     <Box flex={1} backgroundColor={'light'}>
       <Box
@@ -27,7 +24,11 @@ const Post: React.FC<Props> = ({navigation}) => {
         borderBottomColor={'background'}
         paddingBottom={'m'}>
         <Box flexDirection={'row'} alignItems={'center'}>
-          <Icon name={'close'} size={30} />
+          <Icon
+            name={'close'}
+            size={30}
+            onPress={() => navigation.jumpTo('Home')}
+          />
           <Text variant={'bold'} fontSize={20} marginLeft={'sm'}>
             Share Post
           </Text>
@@ -55,6 +56,7 @@ const Post: React.FC<Props> = ({navigation}) => {
         </Box>
 
         <TextInput
+          autoFocus
           placeholder={'What do you want to talk about?'}
           multiline
           style={{
