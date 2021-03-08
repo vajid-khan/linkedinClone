@@ -3,28 +3,33 @@ import {
   createStackNavigator,
   CardStyleInterpolators,
 } from '@react-navigation/stack';
-import {ChatHeader, DefaultHeader, TabNavigation} from '.';
+import {TabNavigation} from '.';
 import {ChatScreen} from '../screens/chat';
 
-const HomeStack = createStackNavigator();
+export type StackList = {
+  Home: undefined;
+  Chat: undefined;
+};
+const HomeStack = createStackNavigator<StackList>();
 
 export default () => {
   return (
     <HomeStack.Navigator
       screenOptions={{
-        header: (props) => <DefaultHeader {...props} />,
+        headerShown: false,
+        // header: (props) => <DefaultHeader {...props} />,
         headerStyle: {
           elevation: 0,
           backgroundColor: 'transparent',
         },
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       }}>
-      <HomeStack.Screen name={'HomeStack'} component={TabNavigation} />
+      <HomeStack.Screen name={'Home'} component={TabNavigation} />
       <HomeStack.Screen
         name={'Chat'}
-        options={{
-          header: (props) => <ChatHeader {...props} />,
-        }}
+        // options={{
+        //   header: (props) => <ChatHeader {...props} />,
+        // }}
         component={ChatScreen}
       />
     </HomeStack.Navigator>

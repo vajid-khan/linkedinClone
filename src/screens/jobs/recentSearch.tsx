@@ -12,7 +12,7 @@ const RecentSearch: React.FC<Props> = () => {
         </Text>
         <Text fontSize={20}>Clear</Text>
       </Box>
-      {new Array(4)
+      {new Array(10)
         .fill(1)
         .map((_, i) => i)
         .map((item) => (
@@ -22,10 +22,10 @@ const RecentSearch: React.FC<Props> = () => {
             borderBottomWidth={1}
             borderBottomColor={'background'}>
             <Box flexDirection={'row'}>
-              <Text variant={'bold'} fontSize={18}>
+              <Text variant={'bold'} fontSize={16}>
                 {item + 1} Search item
               </Text>
-              <Text variant={'bold'} fontSize={16} color={'primary'}>
+              <Text variant={'bold'} color={'primary'}>
                 {' 1 new'}
               </Text>
             </Box>

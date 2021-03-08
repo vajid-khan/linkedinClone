@@ -4,6 +4,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {LeftDrawer, AppStackNavigation} from './routes';
 import theme from './theme';
+import {StatusBar} from 'react-native';
 
 const Drawer = createDrawerNavigator();
 
@@ -11,6 +12,10 @@ export default () => {
   return (
     <ThemeProvider theme={theme}>
       <NavigationContainer>
+        <StatusBar
+          backgroundColor={theme.colors.light}
+          barStyle={'dark-content'}
+        />
         <Drawer.Navigator
           initialRouteName="App"
           drawerContent={(props) => <LeftDrawer {...props} />}>

@@ -1,12 +1,17 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import {Box, Text} from '../../theme';
 import Avatar from '../../components/avatar';
-import {DrawerActions} from '@react-navigation/native';
-import {StackHeaderProps} from '@react-navigation/stack';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {DrawerActions, useNavigation} from '@react-navigation/native';
 
-const Header: React.FC<StackHeaderProps> = ({navigation, scene}) => {
+interface Props {
+  rightActions?: ReactNode;
+}
+
+const Header: React.FC<Props> = ({rightActions}) => {
+  const navigation = useNavigation();
+
   return (
     <Box backgroundColor={'light'}>
       <Box
@@ -28,23 +33,19 @@ const Header: React.FC<StackHeaderProps> = ({navigation, scene}) => {
           <Box flexDirection="row" flex={1}>
             <Icon name={'magnify'} size={20} />
             <Text variant={'bold'} fontSize={16}>
-              Search {scene.route.name === 'Jobs' ? 'jobs' : ''}
+              Search
             </Text>
           </Box>
           <Box>
             <Icon name={'barcode-scan'} size={20} />
           </Box>
         </Box>
-        {scene.route.name === 'Jobs' && (
-          <Box marginHorizontal={'s'}>
-            <Icon name={'dots-vertical'} size={20} />
-          </Box>
-        )}
+        {rightActions}
 
         <Icon
           size={20}
           name={'message-processing'}
-          onPress={() => navigation.push('Chat')}
+          onPress={() => navigation.navigate('Chat')}
         />
       </Box>
     </Box>

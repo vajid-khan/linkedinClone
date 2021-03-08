@@ -1,5 +1,6 @@
 import React from 'react';
 import {FlatList} from 'react-native';
+import withHeader from '../../hoc/withHeader';
 import NotificationItem, {INotification} from './notificationItem';
 
 interface Props {}
@@ -93,4 +94,4 @@ const Notification: React.FC<Props> = () => {
   );
 };
 
-export default Notification;
+export default withHeader(Notification);

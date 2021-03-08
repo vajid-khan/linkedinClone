@@ -1,9 +1,10 @@
 import React from 'react';
-import {ScrollView} from 'react-native';
-import {Box, Text, Theme} from '../../theme';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {useTheme} from '@shopify/restyle';
 import User from './userCard';
+import {ScrollView} from 'react-native';
+import {useTheme} from '@shopify/restyle';
+import {Box, Text, Theme} from '../../theme';
+import withHeader from '../../hoc/withHeader';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 interface Props {}
 
@@ -62,4 +63,4 @@ const Networks: React.FC<Props> = () => {
     </ScrollView>
   );
 };
-export default Networks;
+export default withHeader(Networks);

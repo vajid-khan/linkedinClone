@@ -1,9 +1,13 @@
 import React from 'react';
 import {Box, Text} from '../../theme';
-import {StackHeaderProps} from '@react-navigation/stack';
+import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const ChatHeader: React.FC<StackHeaderProps> = ({navigation}) => {
+interface Props {}
+
+const ChatHeader: React.FC<Props> = () => {
+  const navigation = useNavigation();
+
   return (
     <Box backgroundColor={'light'}>
       <Box
@@ -15,7 +19,7 @@ const ChatHeader: React.FC<StackHeaderProps> = ({navigation}) => {
           <Icon
             name={'arrow-left'}
             size={30}
-            onPress={() => navigation.pop()}
+            onPress={() => navigation.goBack()}
           />
         </Box>
         <Box

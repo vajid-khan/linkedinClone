@@ -1,10 +1,12 @@
-import {Theme} from '@react-navigation/native';
-import {useTheme} from '@shopify/restyle';
 import React from 'react';
-import {ScrollView, FlatList} from 'react-native';
 import {Box, Text} from '../../theme';
-import JobHighlightCard from './JobHighlightCard';
+import {useTheme} from '@shopify/restyle';
 import RecentSearch from './recentSearch';
+import withHeader from '../../hoc/withHeader';
+import {Theme} from '@react-navigation/native';
+import {ScrollView, FlatList} from 'react-native';
+import JobHighlightCard from './JobHighlightCard';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 interface Props {}
 
@@ -34,4 +36,13 @@ const Job: React.FC<Props> = () => {
     </ScrollView>
   );
 };
-export default Job;
+
+const actions = (
+  <>
+    <Box marginHorizontal={'s'}>
+      <Icon name={'dots-vertical'} size={20} />
+    </Box>
+  </>
+);
+
+export default withHeader(Job, actions);
