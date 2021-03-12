@@ -21,7 +21,7 @@ export default () => {
             backgroundColor={theme.colors.light}
             barStyle={'dark-content'}
           />
-          {!user ? (
+          {user ? (
             <AuthStack />
           ) : (
             <Drawer.Navigator
