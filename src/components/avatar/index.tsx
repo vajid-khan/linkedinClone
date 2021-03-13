@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box} from '../theme';
+import {Box} from '../../theme';
 
 interface Props {
   size?: number;

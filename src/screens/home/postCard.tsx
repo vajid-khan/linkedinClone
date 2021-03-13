@@ -3,9 +3,11 @@ import Avatar from '../../components/avatar';
 import {Box, Text} from '../../theme';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-interface Props {}
+interface Props {
+  openAction: () => void;
+}
 
-const PostCard: React.FC<Props> = () => {
+const PostCard: React.FC<Props> = ({openAction}) => {
   return (
     <Box paddingTop={'m'} backgroundColor={'light'} marginTop={'s'}>
       <Box paddingHorizontal={'s'} flexDirection={'row'}>
@@ -18,7 +20,7 @@ const PostCard: React.FC<Props> = () => {
           <Text>1h</Text>
         </Box>
         <Box>
-          <Icon name={'chevron-down'} size={30} />
+          <Icon name={'chevron-down'} size={30} onPress={openAction} />
         </Box>
       </Box>
       <Box padding={'s'}>
