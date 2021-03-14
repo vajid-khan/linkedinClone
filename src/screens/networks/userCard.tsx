@@ -20,13 +20,13 @@ const User: React.FC<Props> = () => {
       margin={'s'}
       overflow={'hidden'}
       borderColor={'background'}>
-      <Box height={100} backgroundColor={'background'} />
+      <Box height={75} backgroundColor={'background'} />
       <Box
         alignItems={'center'}
         style={{
           top: -50,
         }}>
-        <Avatar size={100} />
+        <Avatar size={80} />
         <Text variant={'bold'}>Jhon Doe</Text>
         <Text>Full Stack Developer</Text>
         <Box marginVertical={'s'} flexDirection={'row'} alignItems={'center'}>

@@ -9,7 +9,7 @@ interface Props {}
 
 const Search: React.FC<Props> = () => {
   return (
-    <ScrollView>
+    <ScrollView keyboardShouldPersistTaps={'handled'}>
       <Header />
       <Box paddingHorizontal={'s'}>
         <RecentSearch />
