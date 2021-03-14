@@ -24,11 +24,7 @@ const Post: React.FC<Props> = ({navigation}) => {
         borderBottomColor={'background'}
         paddingBottom={'m'}>
         <Box flexDirection={'row'} alignItems={'center'}>
-          <Icon
-            name={'close'}
-            size={30}
-            onPress={() => navigation.jumpTo('Home')}
-          />
+          <Icon name={'close'} size={30} onPress={() => navigation.goBack()} />
           <Text variant={'bold'} fontSize={20} marginLeft={'sm'}>
             Share Post
           </Text>

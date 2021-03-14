@@ -22,11 +22,7 @@ export default () => {
     <Tab.Navigator tabBar={(props) => <BottomTabBar {...props} />}>
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="My Networks" component={NetworksScreen} />
-      <Tab.Screen
-        name="Post"
-        options={{tabBarVisible: false}}
-        component={PostScreen}
-      />
+      <Tab.Screen name="Post" component={PostScreen} />
       <Tab.Screen name="Notification" component={NotificationScreen} />
       <Tab.Screen name="Jobs" component={JobScreen} />
     </Tab.Navigator>

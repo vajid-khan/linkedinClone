@@ -58,6 +58,10 @@ const BottomTabs: React.FC<BottomTabBarProps> = (props) => {
           const isFocused = state.index === index;
 
           const onPress = () => {
+            if (label === 'Post') {
+              props.navigation.navigate('PostScreen');
+              return;
+            }
             topBorderTranslateY.value = withTiming(width * index);
             const event = navigation.emit({
               type: 'tabPress',
