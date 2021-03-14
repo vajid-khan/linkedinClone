@@ -1,19 +1,10 @@
 import React from 'react';
 import {ScrollView} from 'react-native';
-import Link from '../../theme/link';
 import {Box, Text} from '../../theme';
 import Avatar from '../../components/avatar';
 import {DrawerContentComponentProps} from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Animated, {
-  Extrapolate,
-  interpolate,
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming,
-} from 'react-native-reanimated';
-
-const LINK_HEIGHT = 50;
+import LinkGroup from './linkGroup';
 
 const LeftDrawer: React.FC<DrawerContentComponentProps> = ({navigation}) => {
   return (
@@ -164,74 +155,6 @@ const LeftDrawer: React.FC<DrawerContentComponentProps> = ({navigation}) => {
         </Box>
       </ScrollView>
     </>
-  );
-};
-
-interface ILinkGroup {
-  title: string;
-  initialLinkCount?: number;
-  links: {
-    icon: string;
-    title: string;
-    onPress: () => void;
-  }[];
-}
-
-const LinkGroup = ({links, title, initialLinkCount = 3}: ILinkGroup) => {
-  const more = links.splice(initialLinkCount);
-
-  const height = useSharedValue(0);
-  const style = useAnimatedStyle(() => {
-    return {
-      height: interpolate(
-        height.value,
-        [0, 1],
-        [0, more.length * LINK_HEIGHT],
-        Extrapolate.CLAMP,
-      ),
-      opacity: interpolate(height.value, [0, 1], [0, 1], Extrapolate.CLAMP),
-    };
-  });
-
-  const showMoreStyle = useAnimatedStyle(() => {
-    return {
-      height: interpolate(
-        height.value,
-        [0, 1],
-        [LINK_HEIGHT, 0],
-        Extrapolate.CLAMP,
-      ),
-      opacity: interpolate(height.value, [0, 1], [1, 0], Extrapolate.CLAMP),
-    };
-  });
-
-  return (
-    <Box paddingTop={'m'} borderTopColor={'background'} borderTopWidth={1}>
-      <Text color={'primary'}>{title}</Text>
-      {links.map((link, index) => (
-        <Box key={index} height={LINK_HEIGHT}>
-          <Link key={index} boldTitle {...link} />
-        </Box>
-      ))}
-      {more.length ? (
-        <Box>
-          <Animated.View style={style}>
-            {more.map((link, index) => (
-              <Box key={index} height={LINK_HEIGHT}>
-                <Link key={index} boldTitle {...link} />
-              </Box>
-            ))}
-          </Animated.View>
-          <Animated.View style={showMoreStyle}>
-            <Link
-              boldTitle
-              title={'Show More'}
-              onPress={() => (height.value = withTiming(1))}
-            />
-          </Animated.View>
-        </Box>
-      ) : null}
-    </Box>
   );
 };
 
