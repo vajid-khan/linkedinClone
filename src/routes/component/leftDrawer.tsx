@@ -1,10 +1,19 @@
 import React from 'react';
 import {ScrollView} from 'react-native';
+import Link from '../../theme/link';
 import {Box, Text} from '../../theme';
 import Avatar from '../../components/avatar';
-import FIcon from 'react-native-vector-icons/Feather';
 import {DrawerContentComponentProps} from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Animated, {
+  Extrapolate,
+  interpolate,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
+
+const LINK_HEIGHT = 50;
 
 const LeftDrawer: React.FC<DrawerContentComponentProps> = ({navigation}) => {
   return (
@@ -44,43 +53,106 @@ const LeftDrawer: React.FC<DrawerContentComponentProps> = ({navigation}) => {
       </Box>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Box marginRight={'s'} paddingHorizontal={'m'}>
-          <Box paddingTop={'m'}>
-            <Text variant={'secondary'}>Recent</Text>
-            <Link icon={'users'} title={'React Native'} />
-            <Link icon={'users'} title={'React Native Jobs'} />
-            <Link icon={'users'} title={'UAE Jobs & Careers | React Native'} />
-            <Link icon={'users'} title={'PHP'} />
-          </Box>
+          <LinkGroup
+            title={'Recent'}
+            initialLinkCount={5}
+            links={[
+              {
+                icon: 'users',
+                title: 'React Native',
+                onPress: () => false,
+              },
+              {
+                icon: 'users',
+                title: 'React Native Jobs',
+                onPress: () => false,
+              },
+              {
+                icon: 'users',
+                title: 'UAE Jobs & Careers | React Native',
+                onPress: () => false,
+              },
+              {
+                icon: 'users',
+                title: 'Jobs & Careers | React Native',
+                onPress: () => false,
+              },
+              {
+                icon: 'users',
+                title: 'PHP Developers',
+                onPress: () => false,
+              },
+            ]}
+          />
 
-          <Box
-            paddingTop={'m'}
-            borderTopColor={'background'}
-            borderTopWidth={1}>
-            <Text color={'primary'}>Groups</Text>
-            <Link icon={'users'} title={'React Native'} />
-            <Link icon={'users'} title={'PHP Laravel'} />
-            <Link title={'Show More'} />
-          </Box>
+          <LinkGroup
+            initialLinkCount={3}
+            title={'Groups'}
+            links={[
+              {
+                icon: 'users',
+                title: 'React Native',
+                onPress: () => false,
+              },
+              {
+                icon: 'users',
+                title: 'React',
+                onPress: () => false,
+              },
+              {
+                icon: 'users',
+                title: 'React Native Web',
+                onPress: () => false,
+              },
+              {
+                icon: 'users',
+                title: 'PHP Laravel',
+                onPress: () => false,
+              },
+              {
+                icon: 'users',
+                title: 'React Jobs',
+                onPress: () => false,
+              },
+            ]}
+          />
 
-          <Box
-            paddingTop={'m'}
-            borderTopColor={'background'}
-            borderTopWidth={1}>
-            <Text color={'primary'}>Events</Text>
-            <Link icon={'plus'} title={'Create Event'} />
-          </Box>
-
-          <Box
-            paddingTop={'m'}
-            borderTopColor={'background'}
-            borderTopWidth={1}>
-            <Text color={'primary'}>Followed Hashtags</Text>
-            <Link icon={'hash'} title={'javascript'} />
-            <Link icon={'hash'} title={'reactjs'} />
-            <Link icon={'hash'} title={'laravel'} />
-            <Link icon={'hash'} title={'laracon'} />
-            <Link title={'Show More'} />
-          </Box>
+          <LinkGroup
+            initialLinkCount={2}
+            title={'Followed Hashtags'}
+            links={[
+              {
+                icon: 'hash',
+                title: 'javacript',
+                onPress: () => false,
+              },
+              {
+                icon: 'hash',
+                title: 'reactjs',
+                onPress: () => false,
+              },
+              {
+                icon: 'hash',
+                title: 'javacript',
+                onPress: () => false,
+              },
+              {
+                icon: 'hash',
+                title: 'laravel',
+                onPress: () => false,
+              },
+              {
+                icon: 'hash',
+                title: 'laracon',
+                onPress: () => false,
+              },
+              {
+                icon: 'hash',
+                title: 'computing',
+                onPress: () => false,
+              },
+            ]}
+          />
 
           <Box
             paddingTop={'m'}
@@ -95,18 +167,72 @@ const LeftDrawer: React.FC<DrawerContentComponentProps> = ({navigation}) => {
   );
 };
 
-interface ILink {
+interface ILinkGroup {
   title: string;
-  icon?: 'hash' | 'users' | 'plus';
+  initialLinkCount?: number;
+  links: {
+    icon: string;
+    title: string;
+    onPress: () => void;
+  }[];
 }
 
-const Link = ({title, icon}: ILink) => (
-  <Box paddingVertical={'sm'} flexDirection={'row'} alignItems={'center'}>
-    {icon && <FIcon name={icon} size={20} />}
-    <Text fontSize={16} fontWeight={'700'} numberOfLines={1} paddingLeft={'s'}>
-      {title}
-    </Text>
-  </Box>
-);
+const LinkGroup = ({links, title, initialLinkCount = 3}: ILinkGroup) => {
+  const more = links.splice(initialLinkCount);
+
+  const height = useSharedValue(0);
+  const style = useAnimatedStyle(() => {
+    return {
+      height: interpolate(
+        height.value,
+        [0, 1],
+        [0, more.length * LINK_HEIGHT],
+        Extrapolate.CLAMP,
+      ),
+      opacity: interpolate(height.value, [0, 1], [0, 1], Extrapolate.CLAMP),
+    };
+  });
+
+  const showMoreStyle = useAnimatedStyle(() => {
+    return {
+      height: interpolate(
+        height.value,
+        [0, 1],
+        [LINK_HEIGHT, 0],
+        Extrapolate.CLAMP,
+      ),
+      opacity: interpolate(height.value, [0, 1], [1, 0], Extrapolate.CLAMP),
+    };
+  });
+
+  return (
+    <Box paddingTop={'m'} borderTopColor={'background'} borderTopWidth={1}>
+      <Text color={'primary'}>{title}</Text>
+      {links.map((link, index) => (
+        <Box key={index} height={LINK_HEIGHT}>
+          <Link key={index} boldTitle {...link} />
+        </Box>
+      ))}
+      {more.length ? (
+        <Box>
+          <Animated.View style={style}>
+            {more.map((link, index) => (
+              <Box key={index} height={LINK_HEIGHT}>
+                <Link key={index} boldTitle {...link} />
+              </Box>
+            ))}
+          </Animated.View>
+          <Animated.View style={showMoreStyle}>
+            <Link
+              boldTitle
+              title={'Show More'}
+              onPress={() => (height.value = withTiming(1))}
+            />
+          </Animated.View>
+        </Box>
+      ) : null}
+    </Box>
+  );
+};
 
 export default LeftDrawer;
