@@ -10,6 +10,7 @@ import {
   NavigationContainerRef,
 } from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Drawer = createDrawerNavigator();
 
@@ -32,24 +33,29 @@ export default () => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <UserContext.Provider value={{user, setUser}}>
-        <NavigationContainer ref={navigationRef}>
-          <StatusBar
-            backgroundColor={theme.colors.light}
-            barStyle={'dark-content'}
-          />
-          {user ? (
-            <AuthStack />
-          ) : (
-            <Drawer.Navigator
-              initialRouteName="App"
-              drawerContent={(props) => <LeftDrawer {...props} />}>
-              <Drawer.Screen name="Home" component={AppStackNavigation} />
-            </Drawer.Navigator>
-          )}
-        </NavigationContainer>
-      </UserContext.Provider>
-    </ThemeProvider>
+    <SafeAreaView style={{flex:1}}>
+      <ThemeProvider theme={theme}>
+        <UserContext.Provider value={{user, setUser}}>
+          <NavigationContainer ref={navigationRef}>
+
+            <StatusBar
+              backgroundColor={theme.colors.light}
+              barStyle={'dark-content'}
+            />
+            {user ? (
+              <AuthStack />
+            ) : (
+              <Drawer.Navigator
+                initialRouteName="App"
+                drawerContent={(props) => <LeftDrawer {...props} />}>
+                <Drawer.Screen name="Home" component={AppStackNavigation} />
+              </Drawer.Navigator>
+            )}
+          </NavigationContainer>
+        </UserContext.Provider>
+      </ThemeProvider>
+    </SafeAreaView>
+
+
   );
 };
