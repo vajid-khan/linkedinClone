@@ -55,7 +55,6 @@ const Post: React.FC<Props> = ({navigation}) => {
         </Box>
 
         <TextInput
-          autoFocus
           placeholder={'What do you want to talk about?'}
           multiline
           style={{

@@ -1,6 +1,7 @@
 import {useTheme} from '@shopify/restyle';
 import React, {useContext, useState} from 'react';
 import {Box, Text, Theme} from '../../theme';
+import Input from  '../../components/input';
 import UserContext from '../../context/UserContext';
 import CheckBox from '@react-native-community/checkbox';
 import {
@@ -49,34 +50,24 @@ const Login: React.FC<Props> = () => {
           </Text>
         </Box>
         <Box flex={1} paddingTop={'l'}>
-          <TextInput
+          <Input
             placeholder={'Email'}
-            style={{
-              fontSize: 20,
-              borderBottomWidth: 1,
-              borderBottomColor: '#000',
-            }}
           />
           <Box
             marginTop={'m'}
             flexDirection={'row'}
-            borderBottomWidth={1}
-            alignItems={'center'}
-            style={{
-              borderBottomColor: '#000',
-            }}>
-            <TextInput
-              placeholder={'Password'}
-              style={{
-                flex: 1,
-                fontSize: 20,
-              }}
-            />
+            alignItems={'center'}>
+              <Input
+                placeholder={'Password'}
+                containerStyle={{flex:1}}
+              />
             <Icon name={'eye'} size={25} />
           </Box>
           <Box flexDirection={'row'} alignItems={'center'} marginTop={'l'}>
-            <CheckBox value={true} />
-            <Text variant={'bold'}>Remember Me. </Text>
+            <Box flexDirection={"row"} alignItems={'center'}>
+              <CheckBox value={true} />
+              <Text variant={'bold'} marginLeft={'s'}>Remember Me. </Text>
+            </Box>
             <Text variant={'bold'} color={'primary'}>
               Learn more
             </Text>
