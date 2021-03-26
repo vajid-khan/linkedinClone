@@ -4,12 +4,15 @@ import Avatar from '../../components/avatar';
 import {Box, Text, Theme} from '../../theme';
 import Icon from 'react-native-vector-icons/Feather';
 import {useTheme} from '@shopify/restyle';
+import { Iuser } from '../../lib/interface';
 
 const {width} = Dimensions.get('screen');
 
-interface Props {}
+interface Props {
+  user:Iuser;
+}
 
-const User: React.FC<Props> = () => {
+const User: React.FC<Props> = ({user}) => {
   const theme = useTheme<Theme>();
 
   return (
@@ -26,9 +29,9 @@ const User: React.FC<Props> = () => {
         style={{
           top: -50,
         }}>
-        <Avatar size={80} />
-        <Text variant={'bold'}>Jhon Doe</Text>
-        <Text>Full Stack Developer</Text>
+        <Avatar size={80} picture={user.picture} />
+        <Text variant={'bold'}>{`${user.firstName}`}</Text>
+        <Text>{user.lastName}</Text>
         <Box marginVertical={'s'} flexDirection={'row'} alignItems={'center'}>
           <Icon name={'user-plus'} size={20} />
           <Text>10 mutual connections</Text>

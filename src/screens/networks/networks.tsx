@@ -1,19 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import User from './userCard';
-import {ScrollView} from 'react-native';
+import {ActivityIndicator, ScrollView} from 'react-native';
 import {useTheme} from '@shopify/restyle';
 import {Box, Text, Theme} from '../../theme';
 import withHeader from '../../hoc/withHeader';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Iuser } from '../../lib/interface';
+import axios from '../../lib/axios';
 
 interface Props {}
 
 const Networks: React.FC<Props> = () => {
   const theme = useTheme<Theme>();
+  const [loading, setLoading] = useState(false);
+  const [networks, setNetworks] = useState<Iuser[]>([])
+
+  useEffect(() => {
+    setLoading(true);
+    axios.get('user')
+    .then(res => setNetworks(res.data.data))
+    .finally(() => setLoading(false));
+  }, [])
 
   return (
     <ScrollView
       contentContainerStyle={{
+        flexGrow:1,
         backgroundColor: theme.colors.background,
       }}>
       <Box
@@ -40,26 +52,37 @@ const Networks: React.FC<Props> = () => {
         <Icon name={'chevron-right'} size={30} />
       </Box>
 
-      <Box marginTop={'s'} backgroundColor={'light'}>
-        <Text padding={'s'} fontSize={18}>
-          People you may know from your university
-        </Text>
-        <Box flexWrap={'wrap'} flexDirection={'row'}>
-          {new Array(6).fill(0).map((_, index) => (
-            <User key={index} />
-          ))}
-        </Box>
-      </Box>
-      <Box marginTop={'s'} backgroundColor={'light'}>
-        <Text padding={'s'} fontSize={18}>
-          Software Engineer you may know
-        </Text>
-        <Box flexWrap={'wrap'} flexDirection={'row'}>
-          {new Array(8).fill(0).map((_, index) => (
-            <User key={index} />
-          ))}
-        </Box>
-      </Box>
+      {
+        loading ? (
+          <Box marginVertical={'xl'}>
+            <ActivityIndicator/>
+          </Box>
+        )
+        :
+            <>
+              <Box marginTop={'s'} backgroundColor={'light'}>
+              <Text padding={'s'} fontSize={18}>
+                People you may know from your university
+              </Text>
+              <Box flexWrap={'wrap'} flexDirection={'row'}>
+                {networks.map((user, index) => (
+                  <User key={index} user={user} />
+                ))}
+              </Box>
+            </Box>
+            <Box marginTop={'s'} backgroundColor={'light'}>
+              <Text padding={'s'} fontSize={18}>
+                Software Engineer you may know
+              </Text>
+              <Box flexWrap={'wrap'} flexDirection={'row'}>
+                {networks.map((user, index) => (
+                  <User key={index} user={user} />
+                ))}
+              </Box>
+             </Box>
+          </>
+      }
+
     </ScrollView>
   );
 };
