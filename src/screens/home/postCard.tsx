@@ -2,19 +2,21 @@ import React from 'react';
 import Avatar from '../../components/avatar';
 import {Box, Text} from '../../theme';
 import Icon from 'react-native-vector-icons/Ionicons';
-
+import { Image } from 'react-native';
+import { IPost } from '../../lib/interface';
 interface Props {
+  post:IPost;
   openAction: () => void;
 }
 
-const PostCard: React.FC<Props> = ({openAction}) => {
+const PostCard: React.FC<Props> = ({openAction,post}) => {
   return (
     <Box paddingTop={'m'} backgroundColor={'light'} marginTop={'s'}>
       <Box paddingHorizontal={'s'} flexDirection={'row'}>
-        <Avatar />
+        <Avatar picture={post.owner.picture} />
         <Box flex={1} marginLeft={'s'}>
-          <Text variant={'bold'} fontSize={22}>
-            Title
+          <Text variant={'bold'} fontSize={20} numberOfLines={1}>
+            {`${post.owner.firstName} ${post.owner.firstName}`}
           </Text>
           <Text>1.2m followers</Text>
           <Text>1h</Text>
@@ -25,15 +27,20 @@ const PostCard: React.FC<Props> = ({openAction}) => {
       </Box>
       <Box padding={'s'}>
         <Text>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-          explicabo in
+          {post.text}
         </Text>
       </Box>
-      <Box height={200} backgroundColor={'primary'} />
+      <Box height={200} backgroundColor={'primary'}>
+        <Image
+          resizeMode={'cover'}
+          style={{height:200,}}
+          source={{uri:post.image}}
+        />
+        </Box>
 
       <Box padding={'s'}>
-        <Text fontWeight={'bold'}>Lorem ipsum dolor sit amet consectetur</Text>
-        <Text>Lorem ipsum dolor sit amet consectetur</Text>
+        <Text fontWeight={'bold'}>{post.text}</Text>
+        <Text>{post.link}</Text>
       </Box>
       <Box margin={'sm'} flexDirection={'row'}>
         <Box
@@ -43,7 +50,7 @@ const PostCard: React.FC<Props> = ({openAction}) => {
           style={{padding: 3}}>
           <Icon name={'thumbs-up-outline'} size={15} color={'#fff'} />
         </Box>
-        <Text>3</Text>
+        <Text>{post.likes}</Text>
       </Box>
       <Box
         borderTopColor={'background'}
