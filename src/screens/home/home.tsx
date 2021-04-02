@@ -8,33 +8,41 @@ import BottomSheet, { ActionItem } from '../../components/sheets/bottom';
 import { Modalize } from 'react-native-modalize';
 import axios from '../../lib/axios';
 import { IPost } from '../../lib/interface';
+import Loader from '../../components/loader';
 
 interface Props { }
 
 const Home: React.FC<Props> = () => {
 	const theme = useTheme<Theme>();
 	const ref = React.useRef<Modalize>(null);
+	const [loading, setLoading] = useState(false);
 	const [posts, setPosts] = useState<IPost[]>([]);
 
 	useEffect(() => {
+		setLoading(true);
 		axios.get('post')
 			.then(res => {
 				setPosts(res.data.data);
 			})
-			.catch(console.log);
+			.catch(console.log)
+			.finally(() => setLoading(false));
 	}, [])
 
 
 	return (
 		<>
-			<FlatList
-				contentContainerStyle={{
-					backgroundColor: theme.colors.background,
-				}}
-				data={posts}
-				keyExtractor={(item) => item.id}
-				renderItem={({ item }) => <PostCard post={item} openAction={() => ref.current?.open()} />}
-			/>
+			{loading ? 
+				<Loader/> :
+				<FlatList
+					contentContainerStyle={{
+						backgroundColor: theme.colors.background,
+					}}
+					data={posts}
+					keyExtractor={(item) => item.id}
+					renderItem={({ item }) => <PostCard post={item} openAction={() => ref.current?.open()} />}
+				/>
+			}
+
 			<BottomSheet ref={ref}>
 				<ActionItem icon={'plus'} title={'Action 1'} />
 				<ActionItem icon={'home'} title={'Action 2'} />

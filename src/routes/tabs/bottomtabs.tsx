@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { Box, Text, Theme } from '../../theme';
 import { useTheme } from '@shopify/restyle';
-import { Dimensions, TouchableOpacity } from 'react-native';
+import { Dimensions, TouchableWithoutFeedback } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import Animated, {
@@ -93,24 +93,29 @@ const BottomTabs: React.FC<BottomTabBarProps> = (props) => {
 							paddingVertical={'s'}
 							alignItems={'center'}
 							justifyContent={'center'}>
-							<TouchableOpacity
+							<TouchableWithoutFeedback
 								accessibilityRole="button"
 								accessibilityLabel={options.tabBarAccessibilityLabel}
 								testID={options.tabBarTestID}
 								onPress={onPress}
 								onLongPress={onLongPress}
 								style={{ alignItems: 'center' }}>
-								<Icon
-									name={TabsIcon[route.name]}
-									size={20}
-									color={
-										isFocused ? theme.colors.primary : theme.colors.background
-									}
-								/>
-								<Text numberOfLines={1} fontSize={12}>
-									{label}
-								</Text>
-							</TouchableOpacity>
+								<Box
+									alignItems={'center'}
+									justifyContent={'center'}
+								>
+									<Icon
+										name={TabsIcon[route.name]}
+										size={20}
+										color={
+											isFocused ? theme.colors.primary : theme.colors.background
+										}
+									/>
+									<Text numberOfLines={1} fontSize={12}>
+										{label}
+									</Text>
+								</Box>
+							</TouchableWithoutFeedback>
 						</Box>
 					);
 				})}

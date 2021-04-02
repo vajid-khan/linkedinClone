@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import User from './userCard';
-import { ActivityIndicator, ScrollView } from 'react-native';
+import { ScrollView } from 'react-native';
 import { useTheme } from '@shopify/restyle';
 import { Box, Text, Theme } from '../../theme';
 import withHeader from '../../hoc/withHeader';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { IUser } from '../../lib/interface';
 import axios from '../../lib/axios';
+import Loader from '../../components/loader';
 
 interface Props { }
 
@@ -19,6 +20,7 @@ const Networks: React.FC<Props> = () => {
 		setLoading(true);
 		axios.get('user')
 			.then(res => setNetworks(res.data.data))
+			.catch(console.log)
 			.finally(() => setLoading(false));
 	}, [])
 
@@ -53,12 +55,8 @@ const Networks: React.FC<Props> = () => {
 			</Box>
 
 			{
-				loading ? (
-					<Box marginVertical={'xl'}>
-						<ActivityIndicator />
-					</Box>
-				)
-					:
+				loading ? 
+					<Loader/> :
 					<>
 						<Box marginTop={'s'} backgroundColor={'light'}>
 							<Text padding={'s'} fontSize={18}>
