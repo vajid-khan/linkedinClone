@@ -1,4 +1,4 @@
-export interface Iuser{
+export interface IUser{
     id:string;
     firstName:string;
     lastName:string;
@@ -11,5 +11,5 @@ export interface IPost{
     image:string;
     likes:number;
     link:string;
-    owner:Iuser;
+    owner:IUser;
 }

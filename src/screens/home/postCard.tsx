@@ -16,7 +16,7 @@ const PostCard: React.FC<Props> = ({openAction,post}) => {
         <Avatar picture={post.owner.picture} />
         <Box flex={1} marginLeft={'s'}>
           <Text variant={'bold'} fontSize={20} numberOfLines={1}>
-            {`${post.owner.firstName} ${post.owner.firstName}`}
+            {`${post.owner.firstName} ${post.owner.lastName}`}
           </Text>
           <Text>1.2m followers</Text>
           <Text>1h</Text>
