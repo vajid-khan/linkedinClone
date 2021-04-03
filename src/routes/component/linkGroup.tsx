@@ -34,7 +34,7 @@ const BtnLink: React.FC<LinkProps> = ({ title, icon, boldTitle, onPress }) => {
 	
 	return (
 		<BTN onPress={onPress}>
-			<Box paddingHorizontal={'s'} flexDirection={'row'} alignItems={'center'}>
+			<Box paddingHorizontal={'sm'} paddingVertical={"m"} flexDirection={'row'} alignItems={'center'}>
 				{icon ? (
 					<Box marginRight={'s'}>
 						<Icon name={icon} size={20} />
