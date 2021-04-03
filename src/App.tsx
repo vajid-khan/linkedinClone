@@ -1,6 +1,6 @@
 import theme from './theme';
 import AuthStack from './routes/auth';
-import { Alert, BackHandler, Platform, StatusBar } from 'react-native';
+import { BackHandler, Platform, StatusBar } from 'react-native';
 import { ThemeProvider } from '@shopify/restyle';
 import UserContext from './context/UserContext';
 import React, { useRef, useEffect, useState } from 'react';
